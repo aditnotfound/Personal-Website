@@ -1,22 +1,20 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: Reading
-description: Books and articles I keep coming back to.
+description: What Adit is reading, has read, and keeps going back to.
 ---
 
 # Reading
 
-What I've been reading lately and a few things that have stayed with me.
+a slowly growing pile. some of it changed how i think, some of it i finished out of stubbornness.
 
-## Now
+## now
 
-- *Title* — Author
+- *The Mountain Is You* — Brianna Wiest
 
-## Recent
+## already read
 
-- *Title* — Author
-- *Title* — Author
-
-## Always nearby
-
-- *Title* — Author
+- *The Psychology of Money* — Morgan Housel
+- *TransGanization* — Rohit Arora
+- *Zero to One* — Peter Thiel
+- *First Flight* — NCERT, grade 10 *(c'mon, it wasn't that bad)*
