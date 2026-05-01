@@ -1,0 +1,145 @@
+:root {
+	--color-text: #171717;
+	--color-text-muted: #525252;
+	--color-bg: #fafafa;
+	--color-link: #1d4ed8;
+	--color-link-hover: #1e40af;
+	--font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, Ubuntu, Cantarell, 'Noto Sans',
+		sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+	--measure: 38rem;
+	--space-xs: 0.35rem;
+	--space-sm: 0.75rem;
+	--space-md: 1.25rem;
+	--space-lg: 2.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-text: #e5e5e5;
+		--color-text-muted: #a3a3a3;
+		--color-bg: #0a0a0a;
+		--color-link: #93c5fd;
+		--color-link-hover: #bfdbfe;
+	}
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	font-family: var(--font-sans);
+	font-size: 1.0625rem;
+	line-height: 1.65;
+	-webkit-font-smoothing: antialiased;
+	color: var(--color-text);
+	background: var(--color-bg);
+}
+
+body {
+	margin: 0;
+	min-height: 100vh;
+}
+
+a {
+	color: var(--color-link);
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.2em;
+}
+
+a:hover {
+	color: var(--color-link-hover);
+}
+
+a:focus-visible {
+	outline: 2px solid var(--color-link);
+	outline-offset: 2px;
+}
+
+.layout {
+	max-width: var(--measure);
+	margin: 0 auto;
+	padding: var(--space-md) var(--space-sm) var(--space-lg);
+}
+
+.site-header {
+	padding-bottom: var(--space-md);
+	border-bottom: 1px solid color-mix(in srgb, var(--color-text) 12%, transparent);
+	margin-bottom: var(--space-lg);
+}
+
+.site-title {
+	font-size: 1rem;
+	font-weight: 600;
+	letter-spacing: -0.02em;
+	margin: 0 0 var(--space-xs);
+}
+
+.site-title a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.site-title a:hover {
+	color: var(--color-link);
+}
+
+.nav {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-sm) var(--space-md);
+	font-size: 0.9375rem;
+}
+
+.nav a {
+	color: var(--color-text-muted);
+	text-decoration: none;
+}
+
+.nav a:hover,
+.nav a[data-current='true'] {
+	color: var(--color-text);
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.2em;
+}
+
+main :where(h1, h2, h3) {
+	line-height: 1.25;
+	letter-spacing: -0.02em;
+	margin-top: var(--space-lg);
+	margin-bottom: var(--space-sm);
+}
+
+main h1 {
+	font-size: 1.75rem;
+	margin-top: 0;
+}
+
+main h2 {
+	font-size: 1.2rem;
+}
+
+main p {
+	margin: 0 0 var(--space-md);
+}
+
+main ul,
+main ol {
+	margin: 0 0 var(--space-md);
+	padding-left: 1.25rem;
+}
+
+main li {
+	margin-bottom: var(--space-xs);
+}
+
+.site-footer {
+	margin-top: var(--space-lg);
+	padding-top: var(--space-md);
+	border-top: 1px solid color-mix(in srgb, var(--color-text) 12%, transparent);
+	font-size: 0.875rem;
+	color: var(--color-text-muted);
+}
