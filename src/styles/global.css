@@ -213,3 +213,24 @@ main li {
 	display: inline-block;
 	margin-bottom: 0.1rem;
 }
+
+/* One-line facts under the hero — mono stack like a terminal poem */
+.intro-stack {
+	margin: var(--space-md) 0 var(--space-lg);
+	font-family: var(--font-mono);
+	font-size: 0.9375rem;
+	line-height: 1.55;
+	letter-spacing: -0.01em;
+}
+
+.intro-stack .intro-line {
+	margin: 0 0 var(--space-xs);
+}
+
+.intro-stack .intro-line:last-child {
+	margin-bottom: 0;
+}
+
+.intro-stack .intro-line--soft {
+	color: var(--color-text-muted);
+}
