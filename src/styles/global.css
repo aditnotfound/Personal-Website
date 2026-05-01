@@ -340,6 +340,34 @@ main li {
 	}
 }
 
+/* Post detail page */
+.post-meta {
+	font-family: var(--font-mono);
+	font-size: 0.78rem;
+	color: var(--color-text-muted);
+	margin: 0 0 var(--space-sm);
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+}
+
+.post-back {
+	font-family: var(--font-mono);
+	font-size: 0.85rem;
+	margin-top: var(--space-lg);
+}
+
+.post-back a {
+	color: var(--color-text-muted);
+	text-decoration: none;
+}
+
+.post-back a:hover {
+	color: var(--color-text);
+	text-decoration: underline;
+	text-decoration-thickness: 0.06em;
+	text-underline-offset: 0.18em;
+}
+
 /* One-line facts under the hero — mono stack like a terminal poem */
 .intro-stack {
 	margin: var(--space-md) 0 var(--space-lg);
