@@ -197,3 +197,19 @@ main li {
 	margin-top: var(--space-lg);
 	color: var(--color-text);
 }
+
+.hero {
+	display: flex;
+	align-items: flex-end;
+	gap: 0.6rem;
+	flex-wrap: wrap;
+}
+
+.hero-avatar {
+	height: 4.5rem;
+	width: auto;
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;
+	display: inline-block;
+	margin-bottom: 0.1rem;
+}
