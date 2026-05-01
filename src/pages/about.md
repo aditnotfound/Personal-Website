@@ -6,12 +6,14 @@ description: A bit more about Adit.
 
 # About
 
-I spend most of my time somewhere between [thing one] and [thing two] — and writing things that probably didn't need to be written but felt important anyway.
+I spend most of my time somewhere between founder stuff, building things that may or may not work, and occasionally writing things down just to understand what I think.
 
-I like work that starts out unstructured — the kind where no one really knows the playbook yet. Sometimes that means building, sometimes it means writing, sometimes it means just paying attention.
+I'm still in high school. Most of what I do exists in that weird space before anyone has a name for it yet — running programs, shipping products, figuring out what actually matters versus what just looks like it does.
 
-I'm generally interested in ideas that feel a little early, a little strange, and just credible enough to pursue.
+I like problems where the playbook doesn't exist. The kind where you're making it up as you go, and that's not a bug — it's the whole point.
 
-I'll use this website as a personal repo for my thoughts and my interests.
+I'm interested in ideas that feel delusional, irrational, and somehow inevitable in hindsight.
+
+This site is a place to think out loud. Some of it will be useful. Most of it probably won't be.
 
 <p class="signature">Adit :)</p>
