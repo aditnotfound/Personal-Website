@@ -25,6 +25,21 @@ const tracks = [
 		slug: 'cigarette-daydreams-cage-the-elephant',
 	},
 	{ title: 'Superman', artist: 'Mishaal Tamer', slug: 'superman-mishaal-tamer' },
+	{
+		title: 'Brown Eyes and Backwoods',
+		artist: 'Tom the Mail Man',
+		slug: 'brown-eyes-and-backwoods-tom-the-mail-man',
+	},
+	{ title: 'Tattoos', artist: 'Artemas', slug: 'tattoos-artemas' },
+	{ title: 'Love Again', artist: 'The Kid LAROI', slug: 'love-again-the-kid-laroi' },
+	{ title: 'Feeling Whitney', artist: 'Post Malone', slug: 'feeling-whitney-post-malone' },
+	{ title: 'twenty seven', artist: 'Ethan Marc', slug: 'twenty-seven-ethan-marc' },
+	{ title: 'The Color Violet', artist: 'Tory Lanez', slug: 'the-color-violet-tory-lanez' },
+	{
+		title: 'Travelling Alone',
+		artist: 'Tom the Mail Man',
+		slug: 'travelling-alone-tom-the-mail-man',
+	},
 ];
 
 await mkdir(outDir, { recursive: true });
