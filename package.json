@@ -11,7 +11,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "fix-avatar": "node scripts/fix-avatar-bg.mjs",
-    "fetch-art": "node scripts/fetch-album-art.mjs"
+    "fetch-art": "node scripts/fetch-album-art.mjs",
+    "make-favicon": "node scripts/make-favicon.mjs"
   },
   "dependencies": {
     "astro": "^6.2.1"
