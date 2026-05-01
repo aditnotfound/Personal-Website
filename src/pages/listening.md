@@ -65,4 +65,53 @@ i listen to
       <p class="track-artist">Mishaal Tamer</p>
     </div>
   </li>
+  <li>
+    <div class="track-card">
+      <img class="track-cover" src="brown-eyes-and-backwoods-tom-the-mail-man.jpg" alt="Brown Eyes and Backwoods by Tom the Mail Man" width="600" height="600" loading="lazy" />
+      <p class="track-title">Brown Eyes and Backwoods</p>
+      <p class="track-artist">Tom the Mail Man</p>
+    </div>
+  </li>
+  <li>
+    <div class="track-card">
+      <img class="track-cover" src="tattoos-artemas.jpg" alt="Tattoos by Artemas" width="600" height="600" loading="lazy" />
+      <p class="track-title">Tattoos</p>
+      <p class="track-artist">Artemas</p>
+    </div>
+  </li>
+  <li>
+    <div class="track-card">
+      <img class="track-cover" src="love-again-the-kid-laroi.jpg" alt="Love Again by The Kid LAROI" width="600" height="600" loading="lazy" />
+      <p class="track-title">Love Again</p>
+      <p class="track-artist">The Kid LAROI</p>
+    </div>
+  </li>
+  <li>
+    <div class="track-card">
+      <img class="track-cover" src="feeling-whitney-post-malone.jpg" alt="Feeling Whitney by Post Malone" width="600" height="600" loading="lazy" />
+      <p class="track-title">Feeling Whitney</p>
+      <p class="track-artist">Post Malone</p>
+    </div>
+  </li>
+  <li>
+    <div class="track-card">
+      <img class="track-cover" src="twenty-seven-ethan-marc.jpg" alt="twenty seven by Ethan Marc" width="600" height="600" loading="lazy" />
+      <p class="track-title">twenty seven</p>
+      <p class="track-artist">Ethan Marc</p>
+    </div>
+  </li>
+  <li>
+    <div class="track-card">
+      <img class="track-cover" src="the-color-violet-tory-lanez.jpg" alt="The Color Violet by Tory Lanez" width="600" height="600" loading="lazy" />
+      <p class="track-title">The Color Violet</p>
+      <p class="track-artist">Tory Lanez</p>
+    </div>
+  </li>
+  <li>
+    <div class="track-card">
+      <img class="track-cover" src="travelling-alone-tom-the-mail-man.jpg" alt="Travelling Alone by Tom the Mail Man" width="600" height="600" loading="lazy" />
+      <p class="track-title">Travelling Alone</p>
+      <p class="track-artist">Tom the Mail Man</p>
+    </div>
+  </li>
 </ul>
