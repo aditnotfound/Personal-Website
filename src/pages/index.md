@@ -4,7 +4,7 @@ title: Home
 description: Adit's living notebook on the internet.
 ---
 
-# Adit
+<h1 class="hero">Adit <img class="hero-avatar" src="avatar.png" alt="Pixel avatar of Adit" width="80" height="120" /></h1>
 
 a short tagline / what you do / what you build.
 
