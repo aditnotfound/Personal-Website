@@ -1,16 +1,23 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: Home
-description: A minimal personal site built with Astro and Markdown.
+description: Adit's living notebook on the internet.
 ---
 
-# A quiet corner of the internet
+# Adit
 
-This is a small, typography-first home on the web. Edit this file (`src/pages/index.md`) to introduce yourself in your own voice.
+a short tagline / what you do / what you build.
 
-## Links
+Based in [your city]. I'm interested in ideas that feel slightly early, slightly weird, and somehow obvious only in hindsight.
 
-- [About](about/) — who you are, what you care about
-- [Writing](writing/) — notes, essays, or a single placeholder page
+A bunch of links to get started with some stuff I do:
 
-You can add your email and social profiles here as plain Markdown links.
+- [Project / newsletter one](#)
+- [Project / writing two](#)
+- [Project / podcast three](#)
+
+---
+
+This site is a living notebook more than a finished product. Some things are polished, some are experiments, all of it is part of the same ongoing thought process.
+
+You can usually find me at [your.email@example.com](mailto:your.email@example.com).

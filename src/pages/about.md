@@ -1,11 +1,17 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: About
-description: About this site and its author.
+description: A bit more about Adit.
 ---
 
 # About
 
-Swap this page for a short bio: where you are based, what you work on, and what you like to read or build. Keep paragraphs short; whitespace is part of the aesthetic.
+I spend most of my time somewhere between [thing one] and [thing two] — and writing things that probably didn't need to be written but felt important anyway.
 
-If you use a `username.github.io` repository, your site will load at the root URL. For any other repository name, this project sets Astro `base` automatically in CI so asset and nav links stay correct.
+I like work that starts out unstructured — the kind where no one really knows the playbook yet. Sometimes that means building, sometimes it means writing, sometimes it means just paying attention.
+
+I'm generally interested in ideas that feel a little early, a little strange, and just credible enough to pursue.
+
+I'll use this website as a personal repo for my thoughts and my interests.
+
+<p class="signature">Adit :)</p>

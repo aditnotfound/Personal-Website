@@ -8,15 +8,36 @@ type Frontmatter = {
 
 const { frontmatter } = Astro.props as { frontmatter: Frontmatter };
 const { title, description } = frontmatter;
-const pageTitle = title === 'Home' ? 'Your Name' : `${title} · Your Name`;
+const pageTitle = title === 'Home' ? 'Adit' : `${title} · Adit`;
 const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined;
 
 const base = import.meta.env.BASE_URL;
 const { pathname } = Astro.url;
-const trail = pathname.endsWith('/') ? pathname : `${pathname}/`;
-const isHome = trail === base || pathname === '/' || pathname === '';
-const isAbout = /(^|\/)about\/?$/.test(pathname);
-const isWriting = /(^|\/)writing\/?$/.test(pathname);
+
+const navGroups: Array<Array<{ label: string; slug: string }>> = [
+	[
+		{ label: 'About', slug: 'about' },
+		{ label: 'Thoughts', slug: 'thoughts' },
+	],
+	[
+		{ label: 'Reading', slug: 'reading' },
+		{ label: 'Listening', slug: 'listening' },
+		{ label: 'Photos', slug: 'photos' },
+		{ label: 'Experiments', slug: 'experiments' },
+	],
+];
+
+const isCurrent = (slug: string) =>
+	new RegExp(`(^|/)${slug}/?$`).test(pathname);
+
+const socials = [
+	{ label: 'X', href: 'https://x.com/' },
+	{ label: 'LinkedIn', href: 'https://www.linkedin.com/' },
+	{ label: 'Substack', href: 'https://substack.com/' },
+	{ label: 'Spotify', href: 'https://open.spotify.com/' },
+];
+
+const year = new Date().getFullYear();
 ---
 
 <!doctype html>
@@ -24,6 +45,12 @@ const isWriting = /(^|\/)writing\/?$/.test(pathname);
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:opsz,wght@6..72,300..700&family=Inter:wght@400..700&family=JetBrains+Mono:wght@400;500&family=Sacramento&display=swap"
+		/>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
 		{description && <meta name="description" content={description} />}
@@ -34,19 +61,41 @@ const isWriting = /(^|\/)writing\/?$/.test(pathname);
 		<div class="layout">
 			<header class="site-header">
 				<p class="site-title">
-					<a href={base}>Your Name</a>
+					<a href={base}>/a</a>
 				</p>
 				<nav class="nav" aria-label="Primary">
-					<a href={base} data-current={isHome ? 'true' : undefined}>Home</a>
-					<a href={`${base}about/`} data-current={isAbout ? 'true' : undefined}>About</a>
-					<a href={`${base}writing/`} data-current={isWriting ? 'true' : undefined}>Writing</a>
+					{navGroups.map((group, gi) => (
+						<>
+							{gi > 0 && <span class="nav-sep" aria-hidden="true">|</span>}
+							{group.map((item) => {
+								const current = isCurrent(item.slug);
+								return (
+									<a
+										href={`${base}${item.slug}/`}
+										data-current={current ? 'true' : undefined}
+										aria-current={current ? 'page' : undefined}
+									>
+										{current && <span class="nav-marker" aria-hidden="true">&gt;</span>}
+										{item.label}
+									</a>
+								);
+							})}
+						</>
+					))}
 				</nav>
 			</header>
 			<main>
 				<slot />
 			</main>
 			<footer class="site-footer">
-				<p>Replace copy in Markdown and titles in <code>BaseLayout.astro</code>. Connect a repo and enable GitHub Pages (Actions).</p>
+				<ul class="socials">
+					{socials.map((s) => (
+						<li>
+							<a href={s.href} target="_blank" rel="noopener noreferrer">{s.label}</a>
+						</li>
+					))}
+				</ul>
+				<p class="year">{year}</p>
 			</footer>
 		</div>
 	</body>
