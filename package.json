@@ -10,7 +10,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "fix-avatar": "node scripts/fix-avatar-bg.mjs"
+    "fix-avatar": "node scripts/fix-avatar-bg.mjs",
+    "fetch-art": "node scripts/fetch-album-art.mjs"
   },
   "dependencies": {
     "astro": "^6.2.1"
