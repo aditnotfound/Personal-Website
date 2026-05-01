@@ -44,16 +44,56 @@ const tracks = [
 
 await mkdir(outDir, { recursive: true });
 
+function norm(s) {
+	return (s || '').toLowerCase().replace(/[^a-z0-9]+/g, '');
+}
+
+function artistMatches(want, got) {
+	const a = norm(want);
+	const b = norm(got);
+	if (!a || !b) return false;
+	return a === b || b.includes(a) || a.includes(b);
+}
+
+async function itunesSearch(term, t) {
+	const url = `https://itunes.apple.com/search?term=${encodeURIComponent(term)}&entity=song&limit=15&country=US`;
+	const res = await fetch(url);
+	const data = await res.json();
+	const results = data.results || [];
+	const matched = results.find((r) => artistMatches(t.artist, r.artistName));
+	if (!matched) return null;
+	return {
+		title: matched.trackName,
+		artist: matched.artistName,
+		image: matched.artworkUrl100.replace(/100x100bb/, '600x600bb'),
+	};
+}
+
+async function deezerSearch(t) {
+	const q = encodeURIComponent(`track:"${t.title}" artist:"${t.artist}"`);
+	const url = `https://api.deezer.com/search?q=${q}&limit=10`;
+	const res = await fetch(url);
+	const data = await res.json();
+	const results = data.data || [];
+	const matched =
+		results.find((r) => artistMatches(t.artist, r.artist?.name)) ?? results[0];
+	if (!matched) return null;
+	const image =
+		matched.album?.cover_xl ||
+		matched.album?.cover_big ||
+		matched.album?.cover_medium ||
+		matched.album?.cover;
+	if (!image) return null;
+	return { title: matched.title, artist: matched.artist?.name, image };
+}
+
 for (const t of tracks) {
-	const term = encodeURIComponent(`${t.title} ${t.artist}`);
-	const url = `https://itunes.apple.com/search?term=${term}&entity=song&limit=5`;
-	let hit;
+	let hit = null;
 	try {
-		const res = await fetch(url);
-		const data = await res.json();
-		hit = data.results?.find((r) =>
-			r.artistName?.toLowerCase().includes(t.artist.toLowerCase().split(' ')[0])
-		) ?? data.results?.[0];
+		hit =
+			(await itunesSearch(`${t.title} ${t.artist}`, t)) ??
+			(await itunesSearch(t.title, t)) ??
+			(await deezerSearch(t));
 	} catch (e) {
 		console.warn(`! search failed for ${t.title} - ${t.artist}:`, e.message);
 		continue;
@@ -62,12 +102,11 @@ for (const t of tracks) {
 		console.warn(`! no hit for ${t.title} - ${t.artist}`);
 		continue;
 	}
-	const big = hit.artworkUrl100.replace(/100x100bb/, '600x600bb');
 	try {
-		const imgRes = await fetch(big);
+		const imgRes = await fetch(hit.image);
 		const buf = Buffer.from(await imgRes.arrayBuffer());
 		await writeFile(path.join(outDir, `${t.slug}.jpg`), buf);
-		console.log(`ok   ${t.slug}  <- ${hit.trackName} / ${hit.artistName}`);
+		console.log(`ok   ${t.slug}  <- ${hit.title} / ${hit.artist}`);
 	} catch (e) {
 		console.warn(`! download failed for ${t.slug}:`, e.message);
 	}
