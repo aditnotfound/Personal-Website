@@ -24,4 +24,4 @@ A few of links to get started with some stuff I do:
 
 This site is a living notebook more than a finished product. Some things are polished, some are experiments.
 
-reach me at [me@adit.email](mailto:me@adit.email) — free ice cream if you do.
+reach me at [me@adit.email](mailto:me@adit.email) for free ice cream :)
