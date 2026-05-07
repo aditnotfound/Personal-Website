@@ -1,8 +1,6 @@
 ---
 import '../styles/global.css';
-import { inject } from '@vercel/analytics';
-
-inject();
+import Analytics from '@vercel/analytics/astro';
 
 type Frontmatter = {
 	title: string;
@@ -100,5 +98,6 @@ const year = new Date().getFullYear();
 				<p class="year">{year}</p>
 			</footer>
 		</div>
+		<Analytics />
 	</body>
 </html>
