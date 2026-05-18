@@ -484,3 +484,65 @@ main li {
 .research-footer p {
 	margin: 0;
 }
+
+.research-project {
+	margin-top: var(--space-lg);
+	padding-top: var(--space-md);
+	border-top: 1px solid color-mix(in srgb, var(--color-text) 14%, transparent);
+}
+
+.research-tag {
+	margin: 0 0 var(--space-sm);
+	font-family: var(--font-mono);
+	font-size: 0.72rem;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--color-text-muted);
+}
+
+.research-project-title {
+	font-size: 1.55rem;
+	margin: 0 0 var(--space-md);
+	line-height: 1.2;
+}
+
+.research-project h3 {
+	font-size: 1.05rem;
+	margin: var(--space-md) 0 var(--space-xs);
+	font-family: var(--font-mono);
+	font-weight: 500;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	color: var(--color-text-muted);
+}
+
+.research-hypothesis-lead {
+	font-size: 1.02rem;
+}
+
+.research-hypotheses {
+	margin: 0 0 var(--space-md);
+	padding-left: 1.35rem;
+}
+
+.research-hypotheses li {
+	margin-bottom: var(--space-sm);
+}
+
+.research-design,
+.research-rigor {
+	margin: 0 0 var(--space-md);
+	padding-left: 1.25rem;
+}
+
+.research-design li,
+.research-rigor li {
+	margin-bottom: var(--space-xs);
+}
+
+.research-status-line {
+	margin: var(--space-md) 0 0;
+	font-family: var(--font-mono);
+	font-size: 0.82rem;
+	color: var(--color-text-muted);
+}
