@@ -11,107 +11,86 @@ i listen to
 <ul class="tracks">
   <li>
     <div class="track-card">
-      <img class="track-cover" src="driving-dwllrs.jpg" alt="Driving by DWLLRS" width="600" height="600" loading="lazy" />
-      <p class="track-title">Driving</p>
-      <p class="track-artist">DWLLRS</p>
+      <img class="track-cover" src="rises-the-moon-liana-flores.jpg" alt="rises the moon by Liana Flores" width="600" height="600" loading="lazy" />
+      <p class="track-title">rises the moon</p>
+      <p class="track-artist">Liana Flores</p>
     </div>
   </li>
   <li>
     <div class="track-card">
-      <img class="track-cover" src="creep-radiohead.jpg" alt="Creep by Radiohead" width="600" height="600" loading="lazy" />
-      <p class="track-title">Creep</p>
-      <p class="track-artist">Radiohead</p>
+      <img class="track-cover" src="comfort-chain-instupendo.jpg" alt="Comfort Chain by Instupendo" width="600" height="600" loading="lazy" />
+      <p class="track-title">Comfort Chain</p>
+      <p class="track-artist">Instupendo</p>
     </div>
   </li>
   <li>
     <div class="track-card">
-      <img class="track-cover" src="back-to-friends-sombr.jpg" alt="back to friends by sombr" width="600" height="600" loading="lazy" />
-      <p class="track-title">back to friends</p>
-      <p class="track-artist">sombr</p>
+      <img class="track-cover" src="van-gogh-virginio-aiello.jpg" alt="Van Gogh by Virginio Aiello" width="600" height="600" loading="lazy" />
+      <p class="track-title">Van Gogh</p>
+      <p class="track-artist">Virginio Aiello</p>
     </div>
   </li>
   <li>
     <div class="track-card">
-      <img class="track-cover" src="apocalypse-cigarettes-after-sex.jpg" alt="Apocalypse by Cigarettes After Sex" width="600" height="600" loading="lazy" />
-      <p class="track-title">Apocalypse</p>
-      <p class="track-artist">Cigarettes After Sex</p>
+      <img class="track-cover" src="silver-linings-hendyamps-studios.jpg" alt="Silver Linings by Hendyamps Studios and Aimee Norris" width="600" height="600" loading="lazy" />
+      <p class="track-title">Silver Linings</p>
+      <p class="track-artist">Hendyamps Studios, Aimee Norris</p>
     </div>
   </li>
   <li>
     <div class="track-card">
-      <img class="track-cover" src="off-my-mind-joe-p.jpg" alt="Off My Mind by Joe P" width="600" height="600" loading="lazy" />
-      <p class="track-title">Off My Mind</p>
-      <p class="track-artist">Joe P</p>
+      <img class="track-cover" src="la-lecon-particuliere-francis-lai.jpg" alt="La leçon particulière by Francis Lai and Christian Gaubert" width="600" height="600" loading="lazy" />
+      <p class="track-title">La leçon particulière</p>
+      <p class="track-artist">Francis Lai, Christian Gaubert</p>
     </div>
   </li>
   <li>
     <div class="track-card">
-      <img class="track-cover" src="now-i-know-you-bennett-coast.jpg" alt="Now I Know You by Bennett Coast" width="600" height="600" loading="lazy" />
-      <p class="track-title">Now I Know You</p>
-      <p class="track-artist">Bennett Coast</p>
+      <img class="track-cover" src="a-flower-amidst-thorns-joshua-kyan-aalampour.jpg" alt="A Flower Amidst Thorns by Joshua Kyan Aalampour" width="600" height="600" loading="lazy" />
+      <p class="track-title">A Flower Amidst Thorns</p>
+      <p class="track-artist">Joshua Kyan Aalampour</p>
     </div>
   </li>
   <li>
     <div class="track-card">
-      <img class="track-cover" src="cigarette-daydreams-cage-the-elephant.jpg" alt="Cigarette Daydreams by Cage the Elephant" width="600" height="600" loading="lazy" />
-      <p class="track-title">Cigarette Daydreams</p>
-      <p class="track-artist">Cage the Elephant</p>
+      <img class="track-cover" src="ethereal-txmy.jpg" alt="Ethereal by Txmy" width="600" height="600" loading="lazy" />
+      <p class="track-title">Ethereal</p>
+      <p class="track-artist">Txmy</p>
     </div>
   </li>
   <li>
     <div class="track-card">
-      <img class="track-cover" src="superman-mishaal-tamer.jpg" alt="Superman by Mishaal Tamer" width="600" height="600" loading="lazy" />
-      <p class="track-title">Superman</p>
-      <p class="track-artist">Mishaal Tamer</p>
+      <img class="track-cover" src="solas-gibran-alcocer.jpg" alt="Solas by Gibran Alcocer" width="600" height="600" loading="lazy" />
+      <p class="track-title">Solas</p>
+      <p class="track-artist">Gibran Alcocer</p>
     </div>
   </li>
   <li>
     <div class="track-card">
-      <img class="track-cover" src="brown-eyes-and-backwoods-tom-the-mail-man.jpg" alt="Brown Eyes and Backwoods by Tom the Mail Man" width="600" height="600" loading="lazy" />
-      <p class="track-title">Brown Eyes and Backwoods</p>
-      <p class="track-artist">Tom the Mail Man</p>
+      <img class="track-cover" src="the-sailor-song-gigi-perez.jpg" alt="Sailor Song by Gigi Perez" width="600" height="600" loading="lazy" />
+      <p class="track-title">Sailor Song</p>
+      <p class="track-artist">Gigi Perez</p>
     </div>
   </li>
   <li>
     <div class="track-card">
-      <img class="track-cover" src="tattoos-artemas.jpg" alt="Tattoos by Artemas" width="600" height="600" loading="lazy" />
-      <p class="track-title">Tattoos</p>
+      <img class="track-cover" src="as-the-world-caves-in-matt-maltese.jpg" alt="As the World Caves In by Matt Maltese" width="600" height="600" loading="lazy" />
+      <p class="track-title">As the World Caves In</p>
+      <p class="track-artist">Matt Maltese</p>
+    </div>
+  </li>
+  <li>
+    <div class="track-card">
+      <img class="track-cover" src="im-god-clams-casino.jpg" alt="I'm God by Clams Casino and Imogen Heap" width="600" height="600" loading="lazy" />
+      <p class="track-title">I'm God</p>
+      <p class="track-artist">Clams Casino, Imogen Heap</p>
+    </div>
+  </li>
+  <li>
+    <div class="track-card">
+      <img class="track-cover" src="the-way-you-kiss-me-artemas.jpg" alt="i like the way you kiss me by Artemas" width="600" height="600" loading="lazy" />
+      <p class="track-title">i like the way you kiss me</p>
       <p class="track-artist">Artemas</p>
-    </div>
-  </li>
-  <li>
-    <div class="track-card">
-      <img class="track-cover" src="love-again-the-kid-laroi.jpg" alt="Love Again by The Kid LAROI" width="600" height="600" loading="lazy" />
-      <p class="track-title">Love Again</p>
-      <p class="track-artist">The Kid LAROI</p>
-    </div>
-  </li>
-  <li>
-    <div class="track-card">
-      <img class="track-cover" src="feeling-whitney-post-malone.jpg" alt="Feeling Whitney by Post Malone" width="600" height="600" loading="lazy" />
-      <p class="track-title">Feeling Whitney</p>
-      <p class="track-artist">Post Malone</p>
-    </div>
-  </li>
-  <li>
-    <div class="track-card">
-      <img class="track-cover" src="twenty-seven-ethan-marc.jpg" alt="twenty seven by Ethan Marc" width="600" height="600" loading="lazy" />
-      <p class="track-title">twenty seven</p>
-      <p class="track-artist">Ethan Marc</p>
-    </div>
-  </li>
-  <li>
-    <div class="track-card">
-      <img class="track-cover" src="the-color-violet-tory-lanez.jpg" alt="The Color Violet by Tory Lanez" width="600" height="600" loading="lazy" />
-      <p class="track-title">The Color Violet</p>
-      <p class="track-artist">Tory Lanez</p>
-    </div>
-  </li>
-  <li>
-    <div class="track-card">
-      <img class="track-cover" src="travelling-alone-tom-the-mail-man.jpg" alt="Travelling Alone by Tom the Mail Man" width="600" height="600" loading="lazy" />
-      <p class="track-title">Travelling Alone</p>
-      <p class="track-artist">Tom the Mail Man</p>
     </div>
   </li>
 </ul>

@@ -13,33 +13,26 @@ const root = path.join(__dirname, '..');
 const outDir = path.join(root, 'public', 'listening');
 
 const tracks = [
-	{ title: 'Driving', artist: 'DWLLRS', slug: 'driving-dwllrs' },
-	{ title: 'Creep', artist: 'Radiohead', slug: 'creep-radiohead' },
-	{ title: 'Back to Friends', artist: 'sombr', slug: 'back-to-friends-sombr' },
-	{ title: 'Apocalypse', artist: 'Cigarettes After Sex', slug: 'apocalypse-cigarettes-after-sex' },
-	{ title: 'Off My Mind', artist: 'Joe P', slug: 'off-my-mind-joe-p' },
-	{ title: 'Now I Know You', artist: 'Bennett Coast', slug: 'now-i-know-you-bennett-coast' },
+	{ title: 'rises the moon', artist: 'Liana Flores', slug: 'rises-the-moon-liana-flores' },
+	{ title: 'Comfort Chain', artist: 'Instupendo', slug: 'comfort-chain-instupendo' },
+	{ title: 'Van Gogh', artist: 'Virginio Aiello', slug: 'van-gogh-virginio-aiello' },
+	{ title: 'Silver Linings', artist: 'Hendyamps Studios', slug: 'silver-linings-hendyamps-studios' },
 	{
-		title: 'Cigarette Daydreams',
-		artist: 'Cage the Elephant',
-		slug: 'cigarette-daydreams-cage-the-elephant',
+		title: 'La leçon particulière',
+		artist: 'Francis Lai',
+		slug: 'la-lecon-particuliere-francis-lai',
 	},
-	{ title: 'Superman', artist: 'Mishaal Tamer', slug: 'superman-mishaal-tamer' },
 	{
-		title: 'Brown Eyes and Backwoods',
-		artist: 'Tom the Mail Man',
-		slug: 'brown-eyes-and-backwoods-tom-the-mail-man',
+		title: 'A Flower Amidst Thorns',
+		artist: 'Joshua Kyan Aalampour',
+		slug: 'a-flower-amidst-thorns-joshua-kyan-aalampour',
 	},
-	{ title: 'Tattoos', artist: 'Artemas', slug: 'tattoos-artemas' },
-	{ title: 'Love Again', artist: 'The Kid LAROI', slug: 'love-again-the-kid-laroi' },
-	{ title: 'Feeling Whitney', artist: 'Post Malone', slug: 'feeling-whitney-post-malone' },
-	{ title: 'twenty seven', artist: 'Ethan Marc', slug: 'twenty-seven-ethan-marc' },
-	{ title: 'The Color Violet', artist: 'Tory Lanez', slug: 'the-color-violet-tory-lanez' },
-	{
-		title: 'Travelling Alone',
-		artist: 'Tom the Mail Man',
-		slug: 'travelling-alone-tom-the-mail-man',
-	},
+	{ title: 'Ethereal', artist: 'Txmy', slug: 'ethereal-txmy' },
+	{ title: 'Solas', artist: 'Gibran Alcocer', slug: 'solas-gibran-alcocer' },
+	{ title: 'the sailor song', artist: 'Gigi Perez', slug: 'the-sailor-song-gigi-perez' },
+	{ title: 'As the World Caves In', artist: 'Matt Maltese', slug: 'as-the-world-caves-in-matt-maltese' },
+	{ title: "I'm God", artist: 'Clams Casino', slug: 'im-god-clams-casino' },
+	{ title: 'The Way You Kiss Me', artist: 'Artemas', slug: 'the-way-you-kiss-me-artemas' },
 ];
 
 await mkdir(outDir, { recursive: true });
