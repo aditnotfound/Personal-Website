@@ -1,0 +1,385 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+type Project = {
+	id: string;
+	title: string;
+	status: string;
+	teaser: string;
+	paragraphs: string[];
+	features?: { heading: string; items: string[] };
+	stack?: { heading: string; body: string };
+	closer?: string;
+};
+
+const active: Project[] = [
+	{
+		id: 'orbit',
+		title: 'Orbit',
+		status: 'Live',
+		teaser:
+			'Pulls your LinkedIn and X connections into one enriched graph, then lets you ask it questions in plain english.',
+		paragraphs: [
+			'your network already knows the person you need. the problem is that the knowledge is scattered across a linkedin export you never opened, a follow list you scroll at 2am, and a vague memory of someone who used to work at stripe. orbit collects all of it and turns it into something you can interrogate.',
+			'you point it at linkedin and X and it pulls in who you know. each person then gets enriched into a real profile instead of a name and a job title: headline, current role and company, full job history, location and country, skills, education, certifications, languages, follower count, bio. a bare csv row comes out the other side as a person with a history.',
+			'then you search in english. no filters, no boolean operators. "founders with AI experience", "people who worked at google", "engineers in san francisco", "anyone in fintech who also knows someone in mumbai". the query goes to gemini alongside a compressed representation of your graph, and results come back ranked with the reason each person matched, so you can see whether it hit on job history, skills, the bio, or some old position nobody would have thought to filter for.',
+		],
+		features: {
+			heading: 'what it does',
+			items: [
+				'ingest from linkedin and X, plus raw csv or json if you would rather bring your own dump',
+				'enrichment that fills in job history, skills, schools, certs, languages, location',
+				'natural language search across your own graph, with a stated reason per match',
+				'warm path view: who you go through to reach someone, instead of cold messaging them',
+				'a d3 and topojson globe plotting where your network physically sits, which is how i learned mine is embarrassingly concentrated in three cities',
+				'dashboards on industry, seniority, geography, and skill frequency',
+				'collision handling for when the same person shows up twice with two different jobs, so you resolve the conflict instead of hoarding duplicates',
+				'roast mode, which reads your aggregate stats and tells you how boring your network is. mine got called a linkedin comment section with extra steps',
+			],
+		},
+		stack: {
+			heading: 'architecture',
+			body: 'deliberately client heavy. react 19 and typescript on vite, zustand with a persist layer so the graph lives in your browser instead of on my server, papaparse for imports, gemini for search and roast, d3 plus topojson for the globe, recharts for the dashboards, framer motion for the parts that move, react router holding the pages together. there is no backend sitting on your contacts, and that was the whole point.',
+		},
+		closer:
+			'this lands in the same lane as happenstance, and it does the parts i actually wanted: multi source ingest, semantic search over people, transparent match reasoning, warm intros. i built it because paying for access to my own address book felt insane.',
+	},
+	{
+		id: 'veil',
+		title: 'Veil',
+		status: 'Live',
+		teaser:
+			'An invisible desktop overlay that answers questions about your screen, listens to your calls, and keeps everything local.',
+		paragraphs: [
+			'an ai layer that sits on top of whatever you are already doing. summon it with a keystroke, ask about what is on screen, get an answer, dismiss it. no window shuffling, no tab switching, no pasting screenshots into a chat box.',
+			'it runs in three modes. ask takes a screenshot and streams an answer about it. listen captures system audio, runs speech to text, and can answer as things go, which is useful in calls and lectures where typing is not an option. knowledge is the one i care about most: your notes and documents get embedded locally, and relevant chunks get injected into the prompt so answers arrive in your context rather than in the general case.',
+		],
+		stack: {
+			heading: 'architecture',
+			body: 'tauri, so a rust core with a react frontend in a native webview. the binary stays small and the overlay stays fast enough to feel like part of the os. state lives in a local sqlite database, api keys are yours and never leave the disk, and global shortcuts cover show and hide, dashboard, screenshot, push to talk, and audio listen.',
+		},
+		closer:
+			'it started as a fork of pluely at 0.1.9 under gpl 3.0. upstream put a chunk of the ui behind a license server, so i kept bring your own keys and local storage, unlocked the rest, and moved on. plenty of people are racing to build this category right now and most of them want your keys on their servers.',
+	},
+];
+
+const shelf: Project[] = [
+	{
+		id: 'picogpt',
+		title: 'PicoGPT',
+		status: 'Not mine',
+		teaser:
+			'A complete GPT, training and inference, folded into a QR code. Kuber built it and i have not stopped talking about it since.',
+		paragraphs: [
+			'karpathy posted microgpt. kuber noticed it was not minified, minified it, then kept going until an entire gpt fit inside a qr code. you scan the thing with your phone and a model trains in your browser.',
+			'thirty nine lines of dependency free javascript. inside them: a hand rolled autograd engine, multi head attention with four heads, a feed forward mlp with a gelu approximation, adamw with a cosine learning rate schedule, training and inference loops, and a seeded xoshiro128 prng so runs reproduce. one layer, embedding dimension 16, context length 8, mlp width 64, 4,064 parameters total.',
+			'the delivery is the good part. the html payload is gzipped, base64 encoded, and packed into a version 40-L qr code at 2,953 bytes. the browser native DecompressionStream unpacks it on scan, renders the page, and starts training. no install, no server, no dependencies. a 64 line python version is preserved in legacy.',
+		],
+		closer:
+			'it is a dare more than a product, and i think work like this matters more than another wrapper. it tells you where the floor actually is.',
+	},
+];
+
+const groups = [
+	{ label: 'Active projects', items: active },
+	{ label: 'On the shelf', items: shelf },
+];
+---
+
+<BaseLayout
+	frontmatter={{
+		title: 'Experiments',
+		description: 'Things Adit is building (or about to).',
+	}}
+>
+	<h1>Experiments</h1>
+	<p class="exp-intro">things i built, plus one i keep evangelising. click any of them to open it up.</p>
+
+	{groups.map((group) => (
+		<section class="exp-group">
+			<h2 class="exp-group-label">{group.label}</h2>
+			<ul class="exp-list">
+				{group.items.map((p) => (
+					<li class="exp-item" data-item={p.id}>
+						<button type="button" class="exp-trigger" aria-expanded="false" aria-controls={`panel-${p.id}`}>
+							<span class="exp-head">
+								<span class="exp-title">{p.title}</span>
+								<span class="exp-status">{p.status}</span>
+							</span>
+							<span class="exp-teaser">{p.teaser}</span>
+							<span class="exp-cue" aria-hidden="true">open</span>
+						</button>
+						<div class="exp-body" id={`panel-${p.id}`} role="region" aria-label={`${p.title} details`}>
+							<div class="exp-body-inner">
+								{p.paragraphs.map((text) => <p>{text}</p>)}
+								{p.features && (
+									<>
+										<h3 class="exp-sub">{p.features.heading}</h3>
+										<ul class="exp-features">
+											{p.features.items.map((item) => <li>{item}</li>)}
+										</ul>
+									</>
+								)}
+								{p.stack && (
+									<>
+										<h3 class="exp-sub">{p.stack.heading}</h3>
+										<p>{p.stack.body}</p>
+									</>
+								)}
+								{p.closer && <p class="exp-closer">{p.closer}</p>}
+								<button type="button" class="exp-collapse" data-collapse={p.id}>close</button>
+							</div>
+						</div>
+					</li>
+				))}
+			</ul>
+		</section>
+	))}
+
+	<p class="exp-outro">
+		more as they go from idea to repo to slightly less embarrassing. some of these will age badly and i will leave them up anyway.
+	</p>
+
+	<script>
+		(() => {
+			const items = Array.from(document.querySelectorAll('.exp-item'));
+			if (!items.length) return;
+
+			const setOpen = (item, open) => {
+				const trigger = item.querySelector('.exp-trigger');
+				item.classList.toggle('is-open', open);
+				trigger?.setAttribute('aria-expanded', open ? 'true' : 'false');
+			};
+
+			const closeAll = () => {
+				items.forEach((item) => setOpen(item, false));
+				document.body.removeAttribute('data-exp-open');
+			};
+
+			const open = (item) => {
+				const alreadyOpen = item.classList.contains('is-open');
+				closeAll();
+				if (alreadyOpen) return;
+				setOpen(item, true);
+				document.body.setAttribute('data-exp-open', 'true');
+				requestAnimationFrame(() => {
+					item.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				});
+			};
+
+			items.forEach((item) => {
+				item.querySelector('.exp-trigger')?.addEventListener('click', () => open(item));
+				item.querySelector('.exp-collapse')?.addEventListener('click', () => {
+					closeAll();
+					item.querySelector('.exp-trigger')?.focus();
+				});
+			});
+
+			document.addEventListener('keydown', (e) => {
+				if (e.key !== 'Escape') return;
+				if (!document.body.hasAttribute('data-exp-open')) return;
+				closeAll();
+			});
+		})();
+	</script>
+
+	<style>
+		.exp-intro,
+		.exp-outro {
+			color: var(--color-text-muted);
+		}
+
+		.exp-group {
+			margin-top: var(--space-lg);
+		}
+
+		.exp-group-label {
+			font-family: var(--font-mono);
+			font-size: 0.78rem;
+			letter-spacing: 0.14em;
+			text-transform: uppercase;
+			color: var(--color-text-muted);
+			margin: 0 0 var(--space-sm);
+			font-weight: 500;
+		}
+
+		.exp-list {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		.exp-item {
+			margin: 0;
+			border-top: 1px solid color-mix(in srgb, var(--color-text) 14%, transparent);
+			transition: opacity 200ms ease, background 240ms ease;
+		}
+
+		.exp-item:last-child {
+			border-bottom: 1px solid color-mix(in srgb, var(--color-text) 14%, transparent);
+		}
+
+		body[data-exp-open] .exp-item:not(.is-open) {
+			opacity: 0.42;
+		}
+
+		.exp-trigger {
+			appearance: none;
+			width: 100%;
+			display: grid;
+			gap: var(--space-xs);
+			padding: var(--space-md) 0;
+			border: 0;
+			background: transparent;
+			text-align: left;
+			cursor: pointer;
+			color: inherit;
+			font: inherit;
+		}
+
+		.exp-trigger:focus-visible {
+			outline: 2px solid color-mix(in srgb, var(--color-text) 45%, transparent);
+			outline-offset: 3px;
+		}
+
+		.exp-head {
+			display: flex;
+			align-items: baseline;
+			gap: var(--space-sm);
+			flex-wrap: wrap;
+		}
+
+		.exp-title {
+			font-family: var(--font-display);
+			font-size: 1.6rem;
+			line-height: 1.1;
+			letter-spacing: -0.02em;
+		}
+
+		.exp-status {
+			font-family: var(--font-mono);
+			font-size: 0.7rem;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			color: var(--color-text-muted);
+			border: 1px solid color-mix(in srgb, var(--color-text) 22%, transparent);
+			border-radius: 999px;
+			padding: 0.1rem 0.5rem;
+		}
+
+		.exp-teaser {
+			color: var(--color-text-muted);
+			font-size: 0.98rem;
+			line-height: 1.55;
+			max-width: 40rem;
+		}
+
+		.exp-cue {
+			font-family: var(--font-mono);
+			font-size: 0.78rem;
+			color: var(--color-text-muted);
+		}
+
+		.exp-trigger:hover .exp-cue,
+		.is-open .exp-cue {
+			color: var(--color-text);
+		}
+
+		.is-open .exp-cue::after {
+			content: '';
+		}
+
+		.is-open .exp-cue {
+			visibility: hidden;
+		}
+
+		.exp-body {
+			display: grid;
+			grid-template-rows: 0fr;
+			transition: grid-template-rows 280ms ease;
+		}
+
+		.exp-body-inner {
+			min-height: 0;
+			overflow: hidden;
+		}
+
+		.is-open .exp-body {
+			grid-template-rows: 1fr;
+		}
+
+		.is-open {
+			width: 100vw;
+			margin-left: calc(50% - 50vw);
+			padding-left: max(var(--space-sm), calc(50vw - 26rem));
+			padding-right: max(var(--space-sm), calc(50vw - 26rem));
+			background: color-mix(in srgb, var(--color-text) 4%, transparent);
+		}
+
+		.is-open .exp-body-inner {
+			padding-bottom: var(--space-md);
+		}
+
+		.exp-body-inner p {
+			margin: 0 0 var(--space-md);
+		}
+
+		.exp-sub {
+			font-family: var(--font-mono);
+			font-size: 0.78rem;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			color: var(--color-text-muted);
+			margin: var(--space-md) 0 var(--space-sm);
+			font-weight: 500;
+		}
+
+		.exp-features {
+			margin: 0 0 var(--space-md);
+			padding-left: 1.15rem;
+		}
+
+		.exp-features li {
+			margin-bottom: var(--space-xs);
+		}
+
+		.exp-closer {
+			color: var(--color-text-muted);
+		}
+
+		.exp-collapse {
+			appearance: none;
+			border: 1px solid color-mix(in srgb, var(--color-text) 22%, transparent);
+			background: transparent;
+			color: var(--color-text-muted);
+			font-family: var(--font-mono);
+			font-size: 0.78rem;
+			border-radius: 999px;
+			padding: 0.25rem 0.75rem;
+			cursor: pointer;
+		}
+
+		.exp-collapse:hover {
+			color: var(--color-text);
+			border-color: color-mix(in srgb, var(--color-text) 40%, transparent);
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			.exp-body,
+			.exp-item {
+				transition: none;
+			}
+		}
+
+		@media (max-width: 34rem) {
+			.exp-title {
+				font-size: 1.35rem;
+			}
+
+			.is-open {
+				padding-left: var(--space-sm);
+				padding-right: var(--space-sm);
+			}
+		}
+	</style>
+</BaseLayout>
