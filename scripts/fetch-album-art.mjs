@@ -32,6 +32,9 @@ const tracks = [
 	{ title: 'the sailor song', artist: 'Gigi Perez', slug: 'the-sailor-song-gigi-perez' },
 	{ title: 'As the World Caves In', artist: 'Matt Maltese', slug: 'as-the-world-caves-in-matt-maltese' },
 	{ title: "I'm God", artist: 'Clams Casino', slug: 'im-god-clams-casino' },
+	{ title: 'Golden Brown', artist: 'The Stranglers', slug: 'golden-brown-the-stranglers' },
+	{ title: 'WILDFLOWER', artist: 'Billie Eilish', slug: 'wildflower-billie-eilish' },
+	{ title: 'The Perfect Girl', artist: 'Mareux', slug: 'the-perfect-girl-mareux' },
 	{ title: 'The Way You Kiss Me', artist: 'Artemas', slug: 'the-way-you-kiss-me-artemas' },
 ];
 

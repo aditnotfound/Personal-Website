@@ -88,6 +88,27 @@ i listen to
   </li>
   <li>
     <div class="track-card">
+      <img class="track-cover" src="golden-brown-the-stranglers.jpg" alt="Golden Brown by The Stranglers" width="600" height="600" loading="lazy" />
+      <p class="track-title">Golden Brown</p>
+      <p class="track-artist">The Stranglers</p>
+    </div>
+  </li>
+  <li>
+    <div class="track-card">
+      <img class="track-cover" src="wildflower-billie-eilish.jpg" alt="WILDFLOWER by Billie Eilish" width="600" height="600" loading="lazy" />
+      <p class="track-title">WILDFLOWER</p>
+      <p class="track-artist">Billie Eilish</p>
+    </div>
+  </li>
+  <li>
+    <div class="track-card">
+      <img class="track-cover" src="the-perfect-girl-mareux.jpg" alt="The Perfect Girl by Mareux" width="600" height="600" loading="lazy" />
+      <p class="track-title">The Perfect Girl</p>
+      <p class="track-artist">Mareux</p>
+    </div>
+  </li>
+  <li>
+    <div class="track-card">
       <img class="track-cover" src="the-way-you-kiss-me-artemas.jpg" alt="i like the way you kiss me by Artemas" width="600" height="600" loading="lazy" />
       <p class="track-title">i like the way you kiss me</p>
       <p class="track-artist">Artemas</p>
