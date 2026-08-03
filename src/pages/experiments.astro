@@ -12,77 +12,69 @@ type Project = {
 	closer?: string;
 };
 
-const active: Project[] = [
+const projects: Project[] = [
 	{
 		id: 'orbit',
 		title: 'Orbit',
 		status: 'Live',
 		teaser:
-			'Pulls your LinkedIn and X connections into one enriched graph, then lets you ask it questions in plain english.',
+			'Everyone you know, pulled into one enriched graph you can ask questions to in plain english.',
 		paragraphs: [
-			'your network already knows the person you need. the problem is that the knowledge is scattered across a linkedin export you never opened, a follow list you scroll at 2am, and a vague memory of someone who used to work at stripe. orbit collects all of it and turns it into something you can interrogate.',
-			'you point it at linkedin and X and it pulls in who you know. each person then gets enriched into a real profile instead of a name and a job title: headline, current role and company, full job history, location and country, skills, education, certifications, languages, follower count, bio. a bare csv row comes out the other side as a person with a history.',
-			'then you search in english. no filters, no boolean operators. "founders with AI experience", "people who worked at google", "engineers in san francisco", "anyone in fintech who also knows someone in mumbai". the query goes to gemini alongside a compressed representation of your graph, and results come back ranked with the reason each person matched, so you can see whether it hit on job history, skills, the bio, or some old position nobody would have thought to filter for.',
+			'the person you need is usually two people away and you have no way to find them. your linkedin export sits unopened, your X follows are something you scroll at 2am, and the guy who used to work at stripe is half a memory. orbit takes that mess and makes it queryable.',
+			'it pulls your connections from linkedin and X, then fills each one out into a profile worth searching: headline, current title and company, past roles, location, skills, schools, certifications, languages, follower count, bio. a csv row goes in and a person with a history comes out.',
+			'after that you type what you want. "founders who have shipped AI products", "people who worked at google", "engineers in bangalore", "anyone in fintech who also knows someone in mumbai". gemini gets the query plus a compressed version of your graph and hands back ranked people with the reason each one surfaced, so you can tell whether the match came from a job title, an old position, a skill, or one line buried in a bio.',
 		],
 		features: {
 			heading: 'what it does',
 			items: [
-				'ingest from linkedin and X, plus raw csv or json if you would rather bring your own dump',
-				'enrichment that fills in job history, skills, schools, certs, languages, location',
-				'natural language search across your own graph, with a stated reason per match',
-				'warm path view: who you go through to reach someone, instead of cold messaging them',
-				'a d3 and topojson globe plotting where your network physically sits, which is how i learned mine is embarrassingly concentrated in three cities',
-				'dashboards on industry, seniority, geography, and skill frequency',
-				'collision handling for when the same person shows up twice with two different jobs, so you resolve the conflict instead of hoarding duplicates',
-				'roast mode, which reads your aggregate stats and tells you how boring your network is. mine got called a linkedin comment section with extra steps',
+				'ingest from linkedin and X, or a raw csv or json if you would rather bring your own dump',
+				'enrichment that fills in job history, skills, schools, certs, languages, and location',
+				'plain english search across your own graph, with the reason for every match',
+				'warm paths, so you can see who introduces you instead of sending a cold dm',
+				'a globe built with d3 and topojson showing where your network physically lives. mine turned out to be three cities and a rounding error',
+				'dashboards for industry, seniority, geography, and skill frequency',
+				'conflict resolution for when the same person shows up twice holding two different jobs',
+				'roast mode, which reads your stats and tells you how dull your network is. mine got compared to a linkedin comment section',
 			],
 		},
 		stack: {
 			heading: 'architecture',
-			body: 'deliberately client heavy. react 19 and typescript on vite, zustand with a persist layer so the graph lives in your browser instead of on my server, papaparse for imports, gemini for search and roast, d3 plus topojson for the globe, recharts for the dashboards, framer motion for the parts that move, react router holding the pages together. there is no backend sitting on your contacts, and that was the whole point.',
+			body: 'react 19 and typescript on vite. zustand with a persist layer keeps the graph in your browser, papaparse handles imports, gemini runs search and roast, d3 and topojson draw the globe, recharts covers the dashboards, framer motion moves things around, react router holds the pages together. no server ever sees your contacts.',
 		},
 		closer:
-			'this lands in the same lane as happenstance, and it does the parts i actually wanted: multi source ingest, semantic search over people, transparent match reasoning, warm intros. i built it because paying for access to my own address book felt insane.',
+			'happenstance charges for a version of this. i wanted the useful half: multi source ingest, semantic search over people, visible match reasoning, warm intros. paying rent on my own address book felt stupid.',
 	},
 	{
 		id: 'veil',
 		title: 'Veil',
 		status: 'Live',
 		teaser:
-			'An invisible desktop overlay that answers questions about your screen, listens to your calls, and keeps everything local.',
+			'An invisible desktop overlay that reads your screen, hears your calls, and keeps all of it on your machine.',
 		paragraphs: [
-			'an ai layer that sits on top of whatever you are already doing. summon it with a keystroke, ask about what is on screen, get an answer, dismiss it. no window shuffling, no tab switching, no pasting screenshots into a chat box.',
-			'it runs in three modes. ask takes a screenshot and streams an answer about it. listen captures system audio, runs speech to text, and can answer as things go, which is useful in calls and lectures where typing is not an option. knowledge is the one i care about most: your notes and documents get embedded locally, and relevant chunks get injected into the prompt so answers arrive in your context rather than in the general case.',
+			'an ai layer that sits over whatever you are already doing. one keystroke brings it up, you ask about what is on screen, you get an answer, it disappears. no window juggling, no pasting screenshots into a chat tab.',
+			'three modes. ask grabs a screenshot and streams an answer about it. listen captures system audio, runs speech to text, and can answer while things are still happening, which is the whole point during a call or a lecture. knowledge embeds your notes and documents locally, then injects the relevant chunks into the prompt so replies land in your context instead of the general one.',
 		],
 		stack: {
 			heading: 'architecture',
-			body: 'tauri, so a rust core with a react frontend in a native webview. the binary stays small and the overlay stays fast enough to feel like part of the os. state lives in a local sqlite database, api keys are yours and never leave the disk, and global shortcuts cover show and hide, dashboard, screenshot, push to talk, and audio listen.',
+			body: 'tauri, so a rust core with a react frontend in a native webview. small binary, and the overlay is quick enough to feel like part of the os. state lives in a local sqlite file and your api keys never leave the machine. global shortcuts cover show and hide, dashboard, screenshot, push to talk, and audio listen.',
 		},
 		closer:
-			'it started as a fork of pluely at 0.1.9 under gpl 3.0. upstream put a chunk of the ui behind a license server, so i kept bring your own keys and local storage, unlocked the rest, and moved on. plenty of people are racing to build this category right now and most of them want your keys on their servers.',
+			'it started as a fork of pluely 0.1.9 under gpl 3.0. upstream locked part of the ui behind a license server, so i kept bring your own keys and local storage, opened up the rest, and shipped it. half the tools in this category would rather hold your keys for you.',
 	},
-];
-
-const shelf: Project[] = [
 	{
-		id: 'picogpt',
-		title: 'PicoGPT',
-		status: 'Not mine',
+		id: 'qr-gpt',
+		title: 'A GPT inside a QR',
+		status: 'Live',
 		teaser:
-			'A complete GPT, training and inference, folded into a QR code. Kuber built it and i have not stopped talking about it since.',
+			'A full transformer, training and inference included, folded into a QR code you can scan with your phone.',
 		paragraphs: [
-			'karpathy posted microgpt. kuber noticed it was not minified, minified it, then kept going until an entire gpt fit inside a qr code. you scan the thing with your phone and a model trains in your browser.',
-			'thirty nine lines of dependency free javascript. inside them: a hand rolled autograd engine, multi head attention with four heads, a feed forward mlp with a gelu approximation, adamw with a cosine learning rate schedule, training and inference loops, and a seeded xoshiro128 prng so runs reproduce. one layer, embedding dimension 16, context length 8, mlp width 64, 4,064 parameters total.',
-			'the delivery is the good part. the html payload is gzipped, base64 encoded, and packed into a version 40-L qr code at 2,953 bytes. the browser native DecompressionStream unpacks it on scan, renders the page, and starts training. no install, no server, no dependencies. a 64 line python version is preserved in legacy.',
+			'karpathy posted a tiny gpt and it was not minified, which felt like an invitation. i squeezed it down, then kept squeezing until the whole thing fit inside a qr code. scan it and a model starts training in your browser.',
+			'thirty nine lines of javascript, no dependencies. inside those lines: a hand rolled autograd engine, four head attention, a feed forward mlp with a gelu approximation, adamw on a cosine schedule, both the training and inference loops, and a seeded xoshiro128 prng so runs reproduce. one layer, embedding width 16, context length 8, mlp width 64, 4,064 parameters.',
+			'delivery is the fun part. the html payload gets gzipped, base64 encoded, and packed into a version 40-L qr code at 2,953 bytes. the browser runs its own DecompressionStream to unpack it, renders the page, and starts training. nothing to install, no server, no download. an earlier python version is 64 lines and still sits in legacy.',
 		],
 		closer:
-			'it is a dare more than a product, and i think work like this matters more than another wrapper. it tells you where the floor actually is.',
+			'this one is closer to a dare than a product. i keep it around because it shows where the floor actually is.',
 	},
-];
-
-const groups = [
-	{ label: 'Active projects', items: active },
-	{ label: 'On the shelf', items: shelf },
 ];
 ---
 
@@ -93,48 +85,48 @@ const groups = [
 	}}
 >
 	<h1>Experiments</h1>
-	<p class="exp-intro">things i built, plus one i keep evangelising. click any of them to open it up.</p>
+	<p class="exp-intro">side projects that occasionally get out of the house. click a card to open it.</p>
 
-	{groups.map((group) => (
-		<section class="exp-group">
-			<h2 class="exp-group-label">{group.label}</h2>
-			<ul class="exp-list">
-				{group.items.map((p) => (
-					<li class="exp-item" data-item={p.id}>
-						<button type="button" class="exp-trigger" aria-expanded="false" aria-controls={`panel-${p.id}`}>
-							<span class="exp-head">
-								<span class="exp-title">{p.title}</span>
-								<span class="exp-status">{p.status}</span>
-							</span>
-							<span class="exp-teaser">{p.teaser}</span>
-							<span class="exp-cue" aria-hidden="true">open</span>
-						</button>
-						<div class="exp-body" id={`panel-${p.id}`} role="region" aria-label={`${p.title} details`}>
-							<div class="exp-body-inner">
-								{p.paragraphs.map((text) => <p>{text}</p>)}
-								{p.features && (
-									<>
-										<h3 class="exp-sub">{p.features.heading}</h3>
-										<ul class="exp-features">
-											{p.features.items.map((item) => <li>{item}</li>)}
-										</ul>
-									</>
-								)}
-								{p.stack && (
-									<>
-										<h3 class="exp-sub">{p.stack.heading}</h3>
-										<p>{p.stack.body}</p>
-									</>
-								)}
-								{p.closer && <p class="exp-closer">{p.closer}</p>}
-								<button type="button" class="exp-collapse" data-collapse={p.id}>close</button>
-							</div>
-						</div>
-					</li>
-				))}
-			</ul>
-		</section>
-	))}
+	<h2 class="exp-group-label">Active projects</h2>
+
+	<ul class="exp-list">
+		{projects.map((p) => (
+			<li class="exp-card" data-card={p.id}>
+				<button type="button" class="exp-trigger" aria-expanded="false" aria-controls={`panel-${p.id}`}>
+					<span class="exp-head">
+						<span class="exp-title">{p.title}</span>
+						<span class="exp-status">{p.status}</span>
+					</span>
+					<span class="exp-teaser">{p.teaser}</span>
+					<span class="exp-cue">
+						<span class="exp-cue-open">open experiment</span>
+						<span class="exp-cue-close">close</span>
+						<span class="exp-cue-arrow" aria-hidden="true">→</span>
+					</span>
+				</button>
+				<div class="exp-body" id={`panel-${p.id}`} role="region" aria-label={`${p.title} details`}>
+					<div class="exp-body-inner">
+						{p.paragraphs.map((text) => <p>{text}</p>)}
+						{p.features && (
+							<>
+								<h3 class="exp-sub">{p.features.heading}</h3>
+								<ul class="exp-features">
+									{p.features.items.map((item) => <li>{item}</li>)}
+								</ul>
+							</>
+						)}
+						{p.stack && (
+							<>
+								<h3 class="exp-sub">{p.stack.heading}</h3>
+								<p>{p.stack.body}</p>
+							</>
+						)}
+						{p.closer && <p class="exp-closer">{p.closer}</p>}
+					</div>
+				</div>
+			</li>
+		))}
+	</ul>
 
 	<p class="exp-outro">
 		more as they go from idea to repo to slightly less embarrassing. some of these will age badly and i will leave them up anyway.
@@ -142,43 +134,30 @@ const groups = [
 
 	<script>
 		(() => {
-			const items = Array.from(document.querySelectorAll('.exp-item'));
-			if (!items.length) return;
+			const cards = Array.from(document.querySelectorAll('.exp-card'));
+			if (!cards.length) return;
 
-			const setOpen = (item, open) => {
-				const trigger = item.querySelector('.exp-trigger');
-				item.classList.toggle('is-open', open);
-				trigger?.setAttribute('aria-expanded', open ? 'true' : 'false');
+			const setOpen = (card, open) => {
+				card.classList.toggle('is-open', open);
+				card.querySelector('.exp-trigger')?.setAttribute('aria-expanded', open ? 'true' : 'false');
 			};
 
-			const closeAll = () => {
-				items.forEach((item) => setOpen(item, false));
-				document.body.removeAttribute('data-exp-open');
-			};
+			const closeAll = () => cards.forEach((card) => setOpen(card, false));
 
-			const open = (item) => {
-				const alreadyOpen = item.classList.contains('is-open');
-				closeAll();
-				if (alreadyOpen) return;
-				setOpen(item, true);
-				document.body.setAttribute('data-exp-open', 'true');
-				requestAnimationFrame(() => {
-					item.scrollIntoView({ behavior: 'smooth', block: 'start' });
-				});
-			};
-
-			items.forEach((item) => {
-				item.querySelector('.exp-trigger')?.addEventListener('click', () => open(item));
-				item.querySelector('.exp-collapse')?.addEventListener('click', () => {
+			cards.forEach((card) => {
+				card.querySelector('.exp-trigger')?.addEventListener('click', () => {
+					const wasOpen = card.classList.contains('is-open');
 					closeAll();
-					item.querySelector('.exp-trigger')?.focus();
+					if (wasOpen) return;
+					setOpen(card, true);
+					requestAnimationFrame(() => {
+						card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+					});
 				});
 			});
 
 			document.addEventListener('keydown', (e) => {
-				if (e.key !== 'Escape') return;
-				if (!document.body.hasAttribute('data-exp-open')) return;
-				closeAll();
+				if (e.key === 'Escape') closeAll();
 			});
 		})();
 	</script>
@@ -189,17 +168,12 @@ const groups = [
 			color: var(--color-text-muted);
 		}
 
-		.exp-group {
-			margin-top: var(--space-lg);
-		}
-
 		.exp-group-label {
 			font-family: var(--font-mono);
-			font-size: 0.78rem;
-			letter-spacing: 0.14em;
-			text-transform: uppercase;
-			color: var(--color-text-muted);
-			margin: 0 0 var(--space-sm);
+			font-size: 1rem;
+			letter-spacing: 0.02em;
+			color: var(--color-text);
+			margin: var(--space-lg) 0 var(--space-md);
 			font-weight: 500;
 		}
 
@@ -207,28 +181,34 @@ const groups = [
 			list-style: none;
 			margin: 0;
 			padding: 0;
+			display: grid;
+			gap: var(--space-md);
 		}
 
-		.exp-item {
+		.exp-card {
 			margin: 0;
-			border-top: 1px solid color-mix(in srgb, var(--color-text) 14%, transparent);
-			transition: opacity 200ms ease, background 240ms ease;
+			border: 1px solid var(--color-text);
+			border-radius: 2px;
+			background: color-mix(in srgb, #fff 55%, var(--color-bg));
+			box-shadow: 4px 4px 0 color-mix(in srgb, var(--color-text) 88%, transparent);
+			transition: background 200ms ease, box-shadow 160ms ease, transform 160ms ease;
 		}
 
-		.exp-item:last-child {
-			border-bottom: 1px solid color-mix(in srgb, var(--color-text) 14%, transparent);
+		.exp-card:hover {
+			background: color-mix(in srgb, #9db388 34%, var(--color-bg));
 		}
 
-		body[data-exp-open] .exp-item:not(.is-open) {
-			opacity: 0.42;
+		.exp-card.is-open {
+			background: color-mix(in srgb, #9db388 34%, var(--color-bg));
+			box-shadow: 6px 6px 0 color-mix(in srgb, var(--color-text) 88%, transparent);
 		}
 
 		.exp-trigger {
 			appearance: none;
 			width: 100%;
 			display: grid;
-			gap: var(--space-xs);
-			padding: var(--space-md) 0;
+			gap: var(--space-sm);
+			padding: var(--space-md);
 			border: 0;
 			background: transparent;
 			text-align: left;
@@ -238,90 +218,90 @@ const groups = [
 		}
 
 		.exp-trigger:focus-visible {
-			outline: 2px solid color-mix(in srgb, var(--color-text) 45%, transparent);
-			outline-offset: 3px;
+			outline: 2px solid color-mix(in srgb, var(--color-text) 55%, transparent);
+			outline-offset: -4px;
 		}
 
 		.exp-head {
 			display: flex;
 			align-items: baseline;
+			justify-content: space-between;
 			gap: var(--space-sm);
-			flex-wrap: wrap;
 		}
 
 		.exp-title {
-			font-family: var(--font-display);
-			font-size: 1.6rem;
-			line-height: 1.1;
-			letter-spacing: -0.02em;
+			font-family: var(--font-mono);
+			font-size: 1.05rem;
+			font-weight: 500;
+			letter-spacing: -0.01em;
 		}
 
 		.exp-status {
 			font-family: var(--font-mono);
-			font-size: 0.7rem;
-			letter-spacing: 0.1em;
+			font-size: 0.72rem;
+			letter-spacing: 0.08em;
 			text-transform: uppercase;
-			color: var(--color-text-muted);
-			border: 1px solid color-mix(in srgb, var(--color-text) 22%, transparent);
-			border-radius: 999px;
-			padding: 0.1rem 0.5rem;
+			color: color-mix(in srgb, var(--color-text) 70%, transparent);
+			white-space: nowrap;
 		}
 
 		.exp-teaser {
-			color: var(--color-text-muted);
-			font-size: 0.98rem;
+			color: color-mix(in srgb, var(--color-text) 72%, transparent);
+			font-size: 1rem;
 			line-height: 1.55;
-			max-width: 40rem;
 		}
 
 		.exp-cue {
 			font-family: var(--font-mono);
-			font-size: 0.78rem;
-			color: var(--color-text-muted);
-		}
-
-		.exp-trigger:hover .exp-cue,
-		.is-open .exp-cue {
+			font-size: 0.875rem;
 			color: var(--color-text);
+			display: inline-flex;
+			align-items: center;
+			gap: 0.4rem;
 		}
 
-		.is-open .exp-cue::after {
-			content: '';
+		.exp-cue-close {
+			display: none;
 		}
 
-		.is-open .exp-cue {
-			visibility: hidden;
+		.is-open .exp-cue-open {
+			display: none;
+		}
+
+		.is-open .exp-cue-close {
+			display: inline;
+		}
+
+		.exp-cue-arrow {
+			transition: transform 200ms ease;
+		}
+
+		.is-open .exp-cue-arrow {
+			transform: rotate(-90deg);
 		}
 
 		.exp-body {
 			display: grid;
 			grid-template-rows: 0fr;
-			transition: grid-template-rows 280ms ease;
+			transition: grid-template-rows 300ms ease;
 		}
 
 		.exp-body-inner {
 			min-height: 0;
 			overflow: hidden;
+			padding: 0 var(--space-md);
 		}
 
 		.is-open .exp-body {
 			grid-template-rows: 1fr;
 		}
 
-		.is-open {
-			width: 100vw;
-			margin-left: calc(50% - 50vw);
-			padding-left: max(var(--space-sm), calc(50vw - 26rem));
-			padding-right: max(var(--space-sm), calc(50vw - 26rem));
-			background: color-mix(in srgb, var(--color-text) 4%, transparent);
-		}
-
 		.is-open .exp-body-inner {
-			padding-bottom: var(--space-md);
+			border-top: 1px solid color-mix(in srgb, var(--color-text) 22%, transparent);
 		}
 
 		.exp-body-inner p {
-			margin: 0 0 var(--space-md);
+			margin: var(--space-md) 0;
 		}
 
 		.exp-sub {
@@ -329,7 +309,7 @@ const groups = [
 			font-size: 0.78rem;
 			letter-spacing: 0.1em;
 			text-transform: uppercase;
-			color: var(--color-text-muted);
+			color: color-mix(in srgb, var(--color-text) 62%, transparent);
 			margin: var(--space-md) 0 var(--space-sm);
 			font-weight: 500;
 		}
@@ -344,41 +324,25 @@ const groups = [
 		}
 
 		.exp-closer {
-			color: var(--color-text-muted);
-		}
-
-		.exp-collapse {
-			appearance: none;
-			border: 1px solid color-mix(in srgb, var(--color-text) 22%, transparent);
-			background: transparent;
-			color: var(--color-text-muted);
-			font-family: var(--font-mono);
-			font-size: 0.78rem;
-			border-radius: 999px;
-			padding: 0.25rem 0.75rem;
-			cursor: pointer;
-		}
-
-		.exp-collapse:hover {
-			color: var(--color-text);
-			border-color: color-mix(in srgb, var(--color-text) 40%, transparent);
+			color: color-mix(in srgb, var(--color-text) 72%, transparent);
+			padding-bottom: var(--space-xs);
 		}
 
 		@media (prefers-reduced-motion: reduce) {
 			.exp-body,
-			.exp-item {
+			.exp-card,
+			.exp-cue-arrow {
 				transition: none;
 			}
 		}
 
 		@media (max-width: 34rem) {
-			.exp-title {
-				font-size: 1.35rem;
+			.exp-card {
+				box-shadow: 3px 3px 0 color-mix(in srgb, var(--color-text) 88%, transparent);
 			}
 
-			.is-open {
-				padding-left: var(--space-sm);
-				padding-right: var(--space-sm);
+			.exp-head {
+				flex-wrap: wrap;
 			}
 		}
 	</style>
